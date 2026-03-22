@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - FinAI</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <div id="finai-app">
+    <video autoplay muted loop class="bg-video">
+      <source src="assets\videos\vecteezy_president-benjamin-franklin-on-a-one-hundred-dollar-bill_1794370.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <header class="finai-header">
+      <div class="finai-logo">FinAI</div>
+      <nav class="finai-nav">
+        <a href="/index.html" class="finai-nav-link">Home</a>
+        <a href="/login.html" class="finai-btn-outline">Log In</a>
+      </nav>
+    </header>
+
+    <section class="finai-auth-section">
+      <div class="finai-auth-container">
+        <h2 class="finai-auth-title">Create Your Account</h2>
+        <p class="finai-auth-subtitle">Sign up to access all your financial insights in one place.</p>
+        <form class="finai-signup-form">
+          <div class="finai-form-group">
+            <label for="name" class="finai-label">Full Name</label>
+            <input type="text" id="name" class="finai-input" placeholder="Enter your full name" required>
+          </div>
+          <div class="finai-form-group">
+            <label for="email" class="finai-label">Email Address</label>
+            <input type="email" id="email" class="finai-input" placeholder="Enter your email" required>
+          </div>
+          <div class="finai-form-group">
+            <label for="phone" class="finai-label">Phone Number</label>
+            <input type="tel" id="phone" class="finai-input" placeholder="Enter your phone number" required>
+          </div>
+          <div class="finai-form-group">
+            <label for="password" class="finai-label">Password</label>
+            <input type="password" id="password" class="finai-input" placeholder="Create a password" required>
+          </div>
+          <div class="finai-form-group">
+            <label for="confirm-password" class="finai-label">Confirm Password</label>
+            <input type="password" id="confirm-password" class="finai-input" placeholder="Confirm your password" required>
+          </div>
+          <div class="finai-form-group">
+            <label for="national-id" class="finai-label">National ID</label>
+            <input type="text" id="national-id" class="finai-input" placeholder="Enter your national ID" required>
+          </div>
+          <button type="submit" class="finai-btn finai-btn-primary">Sign Up</button>
+          <p class="finai-auth-switch">Already have an account? <a href="/login.html" class="finai-link">Log In</a></p>
+        </form>
+      </div>
+    </section>
+
+    <footer class="finai-footer">
+      <p>© 2025 FinAI. All rights reserved.</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+  </div>
+</body>
+</html>

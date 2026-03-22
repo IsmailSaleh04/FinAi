@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinAI</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+  <div id="finai-app">
+    <video autoplay muted loop class="bg-video">
+      <source src="assets\videos\vecteezy_president-benjamin-franklin-on-a-one-hundred-dollar-bill_1794370.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <header class="finai-header">
+      <div class="finai-logo">FinAI</div>
+      <nav class="finai-nav">
+        <a href="#hero" class="finai-nav-link">Hero</a>
+        <a href="#mission" class="finai-nav-link">Mission</a>
+        <a href="#chatbot" class="finai-nav-link">Chatbot</a>
+      </nav>
+      <div class="finai-auth-links">
+        <a href="/login.html" class="finai-btn-outline">Log In</a>
+        <a href="/signup.html" class="finai-btn-primary">Sign Up</a>
+      </div>
+    </header>
+
+    <section id="hero" class="finai-hero">
+      <div class="finai-hero-text">
+        <h1>Manage Your Money Smarter</h1>
+        <p>Connect all your accounts, analyze spending patterns, and get AI-powered suggestions for saving, investing, and traveling.</p>
+      </div>
+    </section>
+
+    <section id="mission" class="finai-mission">
+      <h2>Our Mission</h2>
+      <p>We strive to simplify financial management by providing smart tools that help users make informed decisions and achieve financial freedom. Our platform empowers you to:</p>
+      <ul class="finai-mission-list">
+        <li>Securely link all your bank accounts in one place</li>
+        <li>Track and analyze spending habits with ease</li>
+        <li>Receive personalized insights for saving and investing</li>
+        <li>Always know the best card to use for rewards and cashback</li>
+      </ul>
+    </section>
+
+    <section id="chatbot" class="finai-chatbot">
+      <div class="finai-chatbot-btn">🤖
+        <span class="finai-chatbot-text">FinAI Chatbot for help</span>
+      </div>
+      <div class="finai-chat-window">
+        <div class="finai-chat-header">Chat with our AI <span class="finai-chatbot-close-btn">✖</span></div>
+        <div class="finai-chat-content"></div>
+        <div class="finai-chatbot-input-container">
+          <input type="text" placeholder="Type your message..." class="finai-chatbot-input">
+          <button class="finai-chatbot-send-btn">Send</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="finai-footer">
+      <p>© 2025 FinAI. All rights reserved.</p>
+    </footer>
+
+    <script src="js/helper.js"></script>
+  </div>
+</body>
+</html>

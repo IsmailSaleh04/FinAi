@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FinAI</title>
+  <link rel="stylesheet" href="styles.css" /> <!-- for header and footer and background -->
+  <link rel="stylesheet" href="css/savings.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+</head>
+<body>
+
+  <div id="finai-app" class="finai-app">
+    <video autoplay muted loop class="bg-video">
+      <source src="assets\videos\vecteezy_president-benjamin-franklin-on-a-one-hundred-dollar-bill_1794370.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <header class="finai-header">
+      <div class="finai-logo">FinAI</div>
+      <nav class="finai-nav">
+        <a href="/dashboard.html" class="finai-nav-link active">Dashboard</a>
+        <a href="/savings.html" class="finai-nav-link">Savings</a>
+        <div class="finai-dropdown">
+          <a href="#" class="finai-dropbtn">Transfer</a>
+          <div class="finai-dropdown-content">
+            <a href="#" id="transfer-my-accounts">Transfer to my accounts</a>
+            <a href="#" id="transfer-other-person">Transfer to other person</a>
+          </div>
+        </div>
+      </nav>
+      <div class="finai-auth-links">
+        <button class="finai-btn-outline" id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <div class="finai-savings">
+      <div class="finai-savings-target">
+        <div class="finai-savings-target-title">
+          <h2>Set Your Savings Target</h2>
+        </div>
+        <button id="setTargetBtn" class="finai-set-target-btn">Set Target</button>
+
+        <div class="finai-savings-progress">
+          <div id="progressBar" class="savings-progress-fill"></div>
+        </div>
+        <p id="progressText" class="progress-text">0% of $0 saved</p>
+      </div>
+
+      <div class="finai-savings-goals">
+        <div class="finai-savings-goals-title">
+          <h2>Your Savings Goals</h2>
+        </div>
+        <div id="goalsGrid" class="finai-goals-grid">
+          <button id="addGoalBtn" class="finai-add-goal-button">+</button>
+          <div id="goalList" class="finai-goals-list">
+            <!-- Goals will be dynamically added here -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <section id="chatbot" class="finai-chatbot">
+      <div class="finai-chatbot-btn">🤖
+        <span class="finai-chatbot-text">FinAI Chatbot for help</span>
+      </div>
+      <div class="finai-chat-window">
+        <div class="finai-chat-header">
+          Chat with our AI 
+          <span class="finai-chatbot-close-btn">✖</span>
+        </div>
+        <div class="finai-chat-content"></div>
+        <div class="finai-chatbot-input-container">
+          <input type="text" placeholder="Type your message..." class="finai-chatbot-input">
+          <button class="finai-chatbot-send-btn">Send</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Set Target Modal -->
+    <div id="targetModal" class="finai-savings-target-modal hidden">
+      <div class="finai-savings-target-content">
+        <h3>Set Your Savings Target</h3>
+        <input id="targetInput" type="number" placeholder="Enter target amount" />
+        <div class="finai-savings-modal-btns">
+          <button id="cancelTargetModal" class="finai-savings-cancel-btn">Cancel</button>
+          <button id="confirmTarget" class="finai-savings-confirm-btn">Save</button>
+        </div>
+      </div>
+    </div>
+
+        <!-- Add Goal Modal -->
+    <div id="savingsGoalModal" class="finai-savings-goal-modal hidden">
+      <div class="finai-savings-goal-content">
+        <h3>Add a Savings Goal</h3>
+        <label for="goalSelect" class="finai-select-goal-label">Select Goal:</label>
+        <select id="goalSelect" class="finai-select-goal-dropdown">
+          <option value="🌍 Travel">🌍 Travel</option>
+          <option value="❤️ Charity">❤️ Charity</option>
+          <option value="🏠 Home">🏠 Home</option>
+          <option value="📚 Education">📚 Education</option>
+          <option value="💻 Gadgets">💻 Gadgets</option>
+        </select>
+
+        <label for="goalPriority">Priority (1–5 stars):</label>
+        <input type="number" id="goalPriority" min="1" max="5" value="3" />
+
+        <label for="goalAmount">Target Amount ($):</label>
+        <input id="goalAmount" type="number" placeholder="e.g. 1000" />
+
+        <div class="finai-savings-modal-btns">
+          <button id="cancelModal" class="finai-savings-cancel-btn">Cancel</button>
+          <button id="confirmGoal" class="finai-savings-confirm-btn">Add Goal</button>
+        </div>
+      </div>
+    </div>
+
+
+        <!-- Transfer to My Accounts Modal -->
+    <div id="internalTransferModal" class="finai-transfer-modal hidden">
+      <div class="finai-transfer-modal-content">
+        <h3>Transfer to My Accounts</h3>
+        <label>From Account:</label>
+        <select id="internalFrom"></select>
+        <label>To Account:</label>
+        <select id="internalTo"></select>
+        <label>Amount:</label>
+        <input type="number" id="internalAmount" min="0" step="0.01">
+        <button id="confirmInternalTransfer">Transfer</button>
+        <button onclick="closeModal('internalTransferModal')">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Transfer to Other User Modal -->
+    <div id="externalTransferModal" class="finai-transfer-modal hidden">
+      <div class="finai-transfer-modal-content">
+        <h3>Transfer to Another User</h3>
+        <label>From Account:</label>
+        <select id="externalFrom"></select>
+        <label>To IBAN:</label>
+        <input type="text" id="externalTo">
+        <label>Amount:</label>
+        <input type="number" id="externalAmount" min="0" step="0.01">
+        <button id="confirmExternalTransfer">Transfer</button>
+        <button onclick="closeModal('externalTransferModal')">Cancel</button>
+      </div>
+    </div>
+
+
+    <footer class="finai-footer">
+      <p>© 2025 FinAI. All rights reserved.</p>
+    </footer>  
+  </div>
+
+  <script src="js/savings.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/transactions.js"></script>
+</body>
+</html>

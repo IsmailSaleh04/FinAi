@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - FinAI</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+  <link rel="stylesheet" href="css/chatbot.css" />
+</head>
+
+<body>
+  <div id="finai-app">
+    <video autoplay muted loop class="bg-video">
+      <source src="assets\videos\vecteezy_president-benjamin-franklin-on-a-one-hundred-dollar-bill_1794370.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
+
+    <header class="finai-header">
+      <div class="finai-logo">FinAI</div>
+      <nav class="finai-nav">
+        <a href="/dashboard.html" class="finai-nav-link active">Dashboard</a>
+        <a href="/savings.html" class="finai-nav-link">Savings</a>
+        <a href="#" class="finai-nav-link">Credit Card Selection</a>
+        <div class="finai-dropdown">
+          <a href="#" class="finai-dropbtn">Transfer</a>
+          <div class="finai-dropdown-content">
+            <a href="#" id="transfer-my-accounts">Transfer to my accounts</a>
+            <a href="#" id="transfer-other-person">Transfer to other person</a>
+          </div>
+        </div>
+      </nav>
+      <div class="finai-auth-links">
+        <button class="finai-btn-outline" id="logout-btn">Logout</button>
+      </div>
+    </header>
+
+    <main class="finai-dashboard">
+
+      <div class="finai-dashboard-left">
+        <div class="finai-dashboard-left-content">
+          <div class="finai-total-balance-card">
+            <h3>Total Balance</h3>
+            <p><strong id="totalBalance">0.00 JOD</strong></p>
+          </div>
+
+          <div class="finai-banks-cards" id="bankCards">
+          </div>
+
+          <div id="addBankSection" class="fin-ai-add-bank-card">
+            <button id="addBankBtn" class="fin-ai-add-bank-btn">+</button>
+            <div id="bankSelectContainer" class="bank-select-container" style="display: none;">
+              <label for="bank-select">Select Bank</label>
+              <select id="bank-select" class="finai-bank-select">
+              </select>
+              <button id="confirmBankBtn" class="bank-select-confirm-btn">Confirm</button>
+            </div>
+            <div id="credential-modal" class="credential-modal">
+              <div class="modal-content">
+                  <span id= "closeBankCredentialModel" class="finai-modal-close-btn">×</span>
+                  <h3>Enter Bank Credentials</h3>
+                  <form id="credential-form">
+                      <label for="account-id">Account ID:</label>
+                      <input type="text" id="account-id" required><br><br>
+                      <button type="submit">Submit Credentials</button>
+                  </form>
+                  <div id="credential-message"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="finai-dashboard-right">
+        <div class="finai-dashboard-top">
+          <div class="finai-user-profile">
+            <div class="finai-user-photo">
+              <div class="profile-image-wrapper">
+                <img id="profileImagePreview" src="/assets/images/profile.jpg" alt="Profile" class="profile-image"/>
+                <div class="overlay">Change</div>
+                <input type="file" id="profileImageInput" accept="image/*" />
+              </div>
+            </div>
+            <h2 id="userName">Welcome</h2>
+          </div>
+        </div>
+
+        <div class="finai-dashboard-middle">
+          <div class="finai-balance-breakdown-card">
+            <div class="total-spendings-earnings-card">
+              <h3>Total Spendings</h3>
+              <p><strong id="totalSpendings">0.00 JOD</strong></p>
+              <h3>Total Earnings</h3>
+              <p><strong id="totalEarnings">0.00 JOD</strong></p>
+            </div>
+
+            <div class="total-transactions-card">
+              <h3>Total Transactions</h3>
+              <ul id="transactionList">
+                <!-- Transactions will be dynamically added here -->
+            </div>
+          </div>
+
+          <div class="finai-analysis-card">
+            <h3>Analysis</h3>
+            <p>Track your spending and savings patterns.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </main>
+
+    <section id="chatbot" class="finai-chatbot">
+      <div class="finai-chatbot-btn">🤖
+        <span class="finai-chatbot-text">FinAI Chatbot for help</span>
+      </div>
+      <div class="finai-chat-window">
+        <div class="finai-chat-header">
+          Chat with our AI 
+          <span class="finai-chatbot-close-btn">✖</span>
+        </div>
+        <div class="finai-chat-content"></div>
+        <div class="finai-chatbot-input-container">
+          <input type="text" placeholder="Type your message..." class="finai-chatbot-input">
+          <button class="finai-chatbot-send-btn">Send</button>
+        </div>
+      </div>
+    </section>
+
+
+        <!-- Transfer to My Accounts Modal -->
+    <div id="internalTransferModal" class="finai-transfer-modal hidden">
+      <div class="finai-transfer-modal-content">
+        <h3>Transfer to My Accounts</h3>
+        <label>From Account:</label>
+        <select id="internalFrom"></select>
+        <label>To Account:</label>
+        <select id="internalTo"></select>
+        <label>Amount:</label>
+        <input type="number" id="internalAmount" min="0" step="0.01">
+        <button id="confirmInternalTransfer">Transfer</button>
+        <button onclick="closeModal('internalTransferModal')">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Transfer to Other User Modal -->
+    <div id="externalTransferModal" class="finai-transfer-modal hidden">
+      <div class="finai-transfer-modal-content">
+        <h3>Transfer to Another User</h3>
+        <label>From Account:</label>
+        <select id="externalFrom"></select>
+        <label>To IBAN:</label>
+        <input type="text" id="externalTo">
+        <label>Amount:</label>
+        <input type="number" id="externalAmount" min="0" step="0.01">
+        <button id="confirmExternalTransfer">Transfer</button>
+        <button onclick="closeModal('externalTransferModal')">Cancel</button>
+      </div>
+    </div>
+
+
+
+    <footer class="finai-footer">
+      <p>© 2025 FinAI. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script type="module" src="/js/dashboard.js"></script>    
+  <script src="js/transactions.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/chatbot.js"></script>
+
+</body>
+</html>

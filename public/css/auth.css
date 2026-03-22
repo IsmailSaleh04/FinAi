@@ -1,0 +1,65 @@
+/* AUTH PAGES (LOGIN & SIGNUP) */
+.finai-auth-section {
+    display: flex;
+    justify-content: center;
+    height: 120vh;
+    align-items: center;
+    padding: 20px;
+}
+
+.finai-auth-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    color: #1b2f44;
+    box-sizing: border-box;
+}
+
+.finai-auth-title {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.finai-auth-subtitle {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.finai-form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.finai-label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.finai-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.finai-auth-switch {
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+.finai-link {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.finai-link:hover {
+    text-decoration: underline;
+}

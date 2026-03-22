@@ -1,0 +1,186 @@
+/* RESET & BASE STYLES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:"Times New Roman", Times, serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+  opacity: 0.3; /* Optional: adjust transparency */
+  pointer-events: none; /* So users can click through */
+}
+
+/* HEADER */
+.finai-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1d0f5c;
+    padding: 15px 40px;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.finai-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.finai-nav {
+    display: flex;
+    align-items: center;
+}
+
+.finai-nav-link {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.finai-nav-link:hover {
+    color: #FDF5AA;
+}
+
+.finai-auth-links {
+    display: flow-root;
+    gap: 15px;
+}
+
+.finai-btn-primary {
+    background-color: #FDF5AA;
+    color: #2c3568;
+    padding: 7px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.finai-btn-outline {
+    background: transparent;
+    color: #fff;
+    padding: 7px 15px;
+    border: 1px solid #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.finai-btn-outline:hover {
+    background-color: #fff;
+    color: #2c3568;
+    cursor: pointer;
+}
+
+/* HERO SECTION */
+.finai-hero {
+    background-color: #113F67;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.finai-hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #58A0C8;
+}
+
+.finai-hero-text p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* MISSION SECTION */
+.finai-mission {
+    background: #58A0C8;
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.finai-mission h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1b2f44;
+    font-size: 2rem;
+    text-shadow: 2px 2px #fff;
+}
+
+.finai-mission p {
+    color: #113F67;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+
+.finai-mission-list {
+    list-style: none;
+    padding: 0;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.finai-mission-list li {
+    background: #ffffff;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #1b2f44;
+}
+
+
+/* ANIMATION */
+@keyframes slideIn {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(0); }
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 768px) {
+    .finai-chat-window {
+        width: 300px;
+        bottom: 70px;
+    }
+
+    .finai-chatbot-input-container {
+        padding: 8px;
+    }
+
+    .finai-chatbot-input {
+        width: 70%;
+    }
+
+    .finai-chatbot-send-btn {
+        width: 20%;
+    }
+}
+
+.finai-footer {
+    text-align: center;
+    padding: 20px;
+    background: #211b3c;
+    color: #fff;
+}
